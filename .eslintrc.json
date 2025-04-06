@@ -4,7 +4,9 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
+  "plugins": ["react"],
   "extends": [
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
@@ -12,5 +14,16 @@
     "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["vite.config.ts"],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    }
+  ]
 }
