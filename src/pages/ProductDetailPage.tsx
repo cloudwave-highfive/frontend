@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -52,11 +50,8 @@ const storeInventory: Store[] = [
   },
 ];
 
-
 export default function ProductDetailPage() {
-
-  const navigate = useNavigate(); // ✅ 내비게이터 훅
-
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -73,7 +68,7 @@ export default function ProductDetailPage() {
     setShowModal(false);
     setShowComplete(true);
     setTimeout(() => setShowComplete(false), 2000);
-    navigate('/order'); // ✅ 여기서 /order로 이동
+    navigate('/order');
   };
 
   return (
@@ -207,24 +202,32 @@ export default function ProductDetailPage() {
             <h3 className="text-xl font-semibold mb-4">재고조회 매장</h3>
             <div className="space-y-4 max-h-[60vh] overflow-y-auto">
               {storeInventory.map((store: Store, idx: number) => (
-                <div key={idx} className="flex items-center gap-4 border-b pb-4">
+                <div key={idx} className="flex gap-4 border-b pb-4 items-start">
                   <img
                     src={store.image}
                     alt={store.name}
                     className="w-24 h-24 object-cover rounded-md"
                   />
                   <div className="flex-1">
-                    <p className="text-lg font-bold">{store.name}</p>
-                    <p className="text-sm text-gray-700">재고수량: {store.stock}개</p>
-                    <p className={`text-sm ${store.open ? 'text-green-600' : 'text-red-500'}`}>
-                      {store.open ? '영업중' : '영업종료'}
-                    </p>
-                    <p className="text-sm text-gray-600">{store.hours}</p>
-                    {store.name === '강남역점' && (
-                      <Button size="sm" className="mt-2 bg-pink-500 text-white" onClick={handlePurchase}>
-                        구매하기
-                      </Button>
-                    )}
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-lg font-bold">{store.name}</p>
+                        <p className="text-sm text-gray-700">재고수량: {store.stock}개</p>
+                        <p className={`text-sm ${store.open ? 'text-green-600' : 'text-red-500'}`}>
+                          {store.open ? '영업중' : '영업종료'}
+                        </p>
+                        <p className="text-sm text-gray-600">{store.hours}</p>
+                      </div>
+                      {store.name === '강남역점' && (
+                        <Button
+                          size="sm"
+                          className="bg-pink-500 text-white mt-8"
+                          onClick={handlePurchase}
+                        >
+                          구매하기
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
