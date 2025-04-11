@@ -21,7 +21,7 @@ export default function OrderCompletePage() {
               </tr>
               <tr className="border-b">
                 <td className="py-2 text-gray-500">총할인금액</td>
-                <td className="py-2 text-right text-pink-500">-4,000원</td>
+                <td className="py-2 text-right text-pink-500">0원</td>
               </tr>
               <tr className="border-b">
                 <td className="py-2 text-gray-500">총배송비</td>
@@ -29,11 +29,11 @@ export default function OrderCompletePage() {
               </tr>
               <tr className="border-b">
                 <td className="py-2 text-gray-500">CJ기프트카드 사용</td>
-                <td className="py-2 text-right text-pink-500">-60,000원</td>
+                <td className="py-2 text-right text-pink-500">0원</td>
               </tr>
               <tr className="border-b">
                 <td className="py-2 text-gray-500">CJ ONE 포인트 사용</td>
-                <td className="py-2 text-right text-pink-500">-970원</td>
+                <td className="py-2 text-right text-pink-500">0원</td>
               </tr>
               <tr>
                 <td className="py-3 text-lg font-semibold">최종 결제금액</td>
