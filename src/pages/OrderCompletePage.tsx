@@ -7,7 +7,7 @@ export default function OrderCompletePage() {
         </h1>
         <p className="text-center text-sm text-gray-700 mb-8">
           <span className="inline-block bg-gray-200 text-black py-1 px-3 rounded-full font-semibold">
-            주문번호: Y2309042135714
+            주문번호: Y2506202135714
           </span>
         </p>
 
@@ -38,7 +38,7 @@ export default function OrderCompletePage() {
               <tr>
                 <td className="py-3 text-lg font-semibold">최종 결제금액</td>
                 <td className="py-3 text-right text-red-500 text-lg font-bold">
-                  0원
+                  64,970원
                 </td>
               </tr>
               <tr>
