@@ -1,12 +1,11 @@
-// PaymentPage.tsx
-import React from 'react';
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, ShoppingCart, User } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function PaymentPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white text-sm">
       {/* 상단 헤더 */}
@@ -123,9 +122,12 @@ export default function PaymentPage() {
               <span className="text-red-600">36,500원</span>
             </div>
           </div>
-          <button className="mt-6 w-full py-3 bg-red-500 text-white font-semibold rounded">
-            결제하기
-          </button>
+          <Button
+            className="mt-6 w-full py-3 bg-red-500 text-white font-semibold rounded"
+            onClick={() => navigate('/order/complete')}
+          >
+          결제하기
+          </Button>
         </section>
       </main>
     </div>

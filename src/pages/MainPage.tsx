@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, ShoppingCart, User } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 export default function OliveYoungClone() {
   return (
@@ -39,14 +40,16 @@ export default function OliveYoungClone() {
         <h3 className="text-lg font-semibold mb-4">요즘 주목 받는 상품</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[...Array(4)].map((_, i) => (
-            <Card key={i} className="hover:shadow-md">
-              <CardContent className="p-4">
-                <div className="h-32 bg-gray-200 rounded mb-2" />
-                <p className="text-sm font-medium">상품 이름 {i + 1}</p>
-                <p className="text-xs text-gray-500">설명 텍스트</p>
-                <p className="text-pink-500 font-bold mt-1">25,900원</p>
-              </CardContent>
-            </Card>
+            <Link to="/product" key={i}>
+              <Card className="hover:shadow-md cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="h-32 bg-gray-200 rounded mb-2" />
+                  <p className="text-sm font-medium">상품 이름 {i + 1}</p>
+                  <p className="text-xs text-gray-500">설명 텍스트</p>
+                  <p className="text-pink-500 font-bold mt-1">25,900원</p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
