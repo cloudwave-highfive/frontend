@@ -32,21 +32,21 @@ const storeInventory: Store[] = [
     stock: 3,
     open: true,
     hours: '10:00 - 21:00',
-    image: '/src/assets/img/store1.jpg',
+    image: '/img/store1.jpg',
   },
   {
     name: '홍대점',
     stock: 0,
     open: false,
     hours: '10:00 - 22:00',
-    image: '/src/assets/img/store2.jpg',
+    image: '/img/store2.jpg',
   },
   {
     name: '잠실점',
     stock: 5,
     open: true,
     hours: '09:00 - 21:00',
-    image: '/src/assets/img/store3.jpg',
+    image: '/img/store3.jpg',
   },
 ];
 
@@ -99,7 +99,7 @@ export default function ProductDetailPage() {
         {/* Left: Image */}
         <div className="flex-1 mb-6 md:mb-0">
           <img
-            src="/src/assets/img/product.jpg"
+            src="/img/product.jpg"
             alt="포맨트 시그니처 퍼퓸"
             className="w-full max-h-[500px] object-contain rounded-lg"
           />
@@ -107,7 +107,7 @@ export default function ProductDetailPage() {
             {['product1.jpg', 'product2.jpg', 'product3.jpg', 'product4.jpg'].map((img: string, idx: number) => (
               <img
                 key={idx}
-                src={`/src/assets/img/${img}`}
+                src={`/img/${img}`}
                 alt={`썸네일 ${idx + 1}`}
                 className="w-24 h-24 object-cover rounded-md border hover:border-pink-500 cursor-pointer"
               />

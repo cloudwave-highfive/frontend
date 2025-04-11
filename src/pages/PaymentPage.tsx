@@ -36,7 +36,7 @@ export default function PaymentPage() {
           {/* 상품 정보 */}
           <div className="flex gap-4 items-center border p-4">
             <img
-              src="/src/assets/img/product.jpg"
+              src="/img/product.jpg"
               alt="상품 이미지"
               className="w-24 h-24 object-cover rounded"
             />
