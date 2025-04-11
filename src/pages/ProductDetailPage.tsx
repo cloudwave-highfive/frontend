@@ -1,18 +1,32 @@
-'use client';
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, ShoppingCart, User, X } from 'lucide-react';
+import { Search, ShoppingCart, User, X, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const productOptions = [
+// 상품 옵션 타입
+interface ProductOption {
+  label: string;
+  price: number;
+}
+
+// 매장 정보 타입
+interface Store {
+  name: string;
+  stock: number;
+  open: boolean;
+  hours: string;
+  image: string;
+}
+
+const productOptions: ProductOption[] = [
   { label: '코튼허그 쿠로미 에디션 50ml 36,500원 - 오늘드림', price: 36500 },
   { label: '코튼메모리 쿠로미 에디션 50ml 46,000원 - 오늘드림', price: 46000 },
   { label: '[리뉴얼]코튼허그 50ml 36,500원 - 오늘드림', price: 36500 },
   { label: '[리뉴얼]코튼메모리 50ml 46,000원 - 오늘드림', price: 46000 },
 ];
 
-const storeInventory = [
+const storeInventory: Store[] = [
   {
     name: '강남역점',
     stock: 3,
@@ -37,16 +51,24 @@ const storeInventory = [
 ];
 
 export default function ProductDetailPage() {
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selectedPrice, setSelectedPrice] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-
+  const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [selectedPrice, setSelectedPrice] = useState<number>(0);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [showComplete, setShowComplete] = useState<boolean>(false);
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selected = productOptions.find((opt) => opt.label === e.target.value);
     setSelectedOption(e.target.value);
     setSelectedPrice(selected ? selected.price : 0);
+  };
+
+  const handlePurchase = () => {
+    setShowModal(false);
+    setShowComplete(true);
+    setTimeout(() => setShowComplete(false), 2000);
+    navigate('/order');
   };
 
   return (
@@ -80,7 +102,7 @@ export default function ProductDetailPage() {
             className="w-full max-h-[500px] object-contain rounded-lg"
           />
           <div className="grid grid-cols-4 gap-7 mt-4">
-            {['product1.jpg', 'product2.jpg', 'product3.jpg', 'product4.jpg'].map((img, idx) => (
+            {['product1.jpg', 'product2.jpg', 'product3.jpg', 'product4.jpg'].map((img: string, idx: number) => (
               <img
                 key={idx}
                 src={`/images/${img}`}
@@ -131,33 +153,38 @@ export default function ProductDetailPage() {
             </p>
             <label className="flex items-center gap-2 mt-2">
               <input type="checkbox" className="form-checkbox" />
-              오늘드림으로 받아 보시겠어요?
+              매장픽업으로 받아 보시겠어요?
             </label>
           </div>
 
+          {/* 수량 */}
           <div className="flex items-center gap-2 mt-2">
             <span className="text-sm font-semibold">수량</span>
             <button
-              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+              onClick={() => setQuantity((prev: number) => Math.max(1, prev - 1))}
               className="px-2 py-1 border rounded"
             >
               -
             </button>
             <span>{quantity}</span>
             <button
-              onClick={() => setQuantity(prev => prev + 1)}
+              onClick={() => setQuantity((prev: number) => prev + 1)}
               className="px-2 py-1 border rounded"
             >
               +
             </button>
           </div>
 
-          
-
           {/* 버튼들 */}
           <div className="flex flex-col md:flex-row gap-2 mt-4">
             <Button className="bg-pink-500 text-white w-full md:w-auto">장바구니</Button>
-            <Button variant="outline" className="w-full md:w-auto">결제하기</Button>
+            <Button
+              variant="outline"
+              className="w-full md:w-auto"
+              onClick={() => setShowModal(true)}
+            >
+              결제하기
+            </Button>
             <Button variant="ghost" className="w-full md:w-auto border" onClick={() => setShowModal(true)}>
               재고조회
             </Button>
@@ -174,20 +201,33 @@ export default function ProductDetailPage() {
             </button>
             <h3 className="text-xl font-semibold mb-4">재고조회 매장</h3>
             <div className="space-y-4 max-h-[60vh] overflow-y-auto">
-              {storeInventory.map((store, idx) => (
-                <div key={idx} className="flex items-center gap-4 border-b pb-4">
+              {storeInventory.map((store: Store, idx: number) => (
+                <div key={idx} className="flex gap-4 border-b pb-4 items-start">
                   <img
                     src={store.image}
                     alt={store.name}
                     className="w-24 h-24 object-cover rounded-md"
                   />
-                  <div>
-                    <p className="text-lg font-bold">{store.name}</p>
-                    <p className="text-sm text-gray-700">재고수량: {store.stock}개</p>
-                    <p className={`text-sm ${store.open ? 'text-green-600' : 'text-red-500'}`}>
-                      {store.open ? '영업중' : '영업종료'}
-                    </p>
-                    <p className="text-sm text-gray-600">{store.hours}</p>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-lg font-bold">{store.name}</p>
+                        <p className="text-sm text-gray-700">재고수량: {store.stock}개</p>
+                        <p className={`text-sm ${store.open ? 'text-green-600' : 'text-red-500'}`}>
+                          {store.open ? '영업중' : '영업종료'}
+                        </p>
+                        <p className="text-sm text-gray-600">{store.hours}</p>
+                      </div>
+                      {store.name === '강남역점' && (
+                        <Button
+                          size="sm"
+                          className="bg-pink-500 text-white mt-8"
+                          onClick={handlePurchase}
+                        >
+                          구매하기
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
