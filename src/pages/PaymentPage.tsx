@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, ShoppingCart, User } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function PaymentPage() {
   const navigate = useNavigate();
@@ -11,7 +11,9 @@ export default function PaymentPage() {
       {/* 상단 헤더 */}
       <header className="w-full border-b shadow-sm">
         <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-          <h1 className="text-xl font-bold text-green-700">OLIVE YOUNG</h1>
+        <h1 className="text-xl font-bold text-green-700">
+          <Link to="/">OLIVE YOUNG</Link>
+        </h1>
           <div className="flex items-center gap-2">
             <Input placeholder="브랜드, 상품 검색" className="w-64" />
             <Button variant="outline" size="icon">
@@ -34,7 +36,7 @@ export default function PaymentPage() {
           {/* 상품 정보 */}
           <div className="flex gap-4 items-center border p-4">
             <img
-              src="/src/assets/img/product.jpg"
+              src="/img/product.jpg"
               alt="상품 이미지"
               className="w-24 h-24 object-cover rounded"
             />

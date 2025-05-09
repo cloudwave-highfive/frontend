@@ -10,7 +10,9 @@ export default function OliveYoungClone() {
       {/* Header */}
       <header className="w-full border-b shadow-sm">
         <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-          <h1 className="text-xl font-bold text-green-700">OLIVE YOUNG</h1>
+        <h1 className="text-xl font-bold text-green-700">
+          <Link to="/">OLIVE YOUNG</Link>
+        </h1>
           <div className="flex items-center gap-2">
             <Input placeholder="브랜드, 상품 검색" className="w-64" />
             <Button variant="outline" size="icon">
