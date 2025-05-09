@@ -20,10 +20,10 @@ interface Store {
 }
 
 const productOptions: ProductOption[] = [
-  { label: '코튼허그 쿠로미 에디션 50ml 36,500원 - 오늘드림', price: 36500 },
-  { label: '코튼메모리 쿠로미 에디션 50ml 46,000원 - 오늘드림', price: 46000 },
-  { label: '[리뉴얼]코튼허그 50ml 36,500원 - 오늘드림', price: 36500 },
-  { label: '[리뉴얼]코튼메모리 50ml 46,000원 - 오늘드림', price: 46000 },
+  { label: '코튼허그 헬로키티 에디션 50ml 36,900원 - 오늘드림', price: 36900 },
+  { label: '코튼메모리 헬로키티 에디션 50ml 46,400원 - 오늘드림', price: 46400 },
+  { label: '헤어퍼퓸 코튼메모리 헬로키티에디션 27,400원 - 오늘드림', price: 27400 },
+  { label: '[리뉴얼]코튼허그 50ml 36,900원 - 오늘드림', price: 36900 },
 ];
 
 const storeInventory: Store[] = [
@@ -99,29 +99,29 @@ export default function ProductDetailPage() {
         {/* Left: Image */}
         <div className="flex-1 mb-6 md:mb-0">
           <img
-            src="/img/product.jpg"
+            src="/img/product1.jpg"
             alt="포맨트 시그니처 퍼퓸"
             className="w-full max-h-[500px] object-contain rounded-lg"
           />
-          <div className="grid grid-cols-4 gap-7 mt-4">
-            {['product1.jpg', 'product2.jpg', 'product3.jpg', 'product4.jpg'].map((img: string, idx: number) => (
+          <div className="flex justify-center gap-2 mt-4 overflow-x-auto">
+            {['product1-1.jpg', 'product1-2.jpg', 'product1-3.jpg', 'product1-4.jpg', 'product1-5.jpg'].map((img: string, idx: number) => (
               <img
                 key={idx}
                 src={`/img/${img}`}
                 alt={`썸네일 ${idx + 1}`}
-                className="w-24 h-24 object-cover rounded-md border hover:border-pink-500 cursor-pointer"
-              />
+                className="w-20 h-20 flex-shrink-0 object-contain bg-white hover:border-pink-500 cursor-pointer"
+              />                        
             ))}
           </div>
         </div>
 
         {/* Right: Info */}
         <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-2 leading-snug">
-            [하루특가/1위향수]포맨트 시그니처 퍼퓸 쿠로미에디션/단품 50ml 2종 택1
+          <h2 className="text-2xl font-bold mb-2 leading-snug max-w-md">
+            [1위향수/한정판]포맨트 시그니처 퍼퓸 헬로키티 에디션/단품 50ml 2종 택1
           </h2>
           <p className="text-pink-600 text-xl font-semibold mb-2">
-            {selectedPrice > 0 ? `${selectedPrice.toLocaleString()}원` : '36,500원 ~'}
+            {selectedPrice > 0 ? `${selectedPrice.toLocaleString()}원` : '36,900원 ~'}
           </p>
 
           {/* 배송정보 */}

@@ -36,14 +36,14 @@ export default function PaymentPage() {
           {/* 상품 정보 */}
           <div className="flex gap-4 items-center border p-4">
             <img
-              src="/img/product.jpg"
+              src="/img/product1.jpg"
               alt="상품 이미지"
               className="w-24 h-24 object-cover rounded"
             />
             <div>
-              <p className="font-semibold">하루두꺼비향수 1개 (옵션: 크림향)</p>
-              <p className="text-gray-500">50ml / 2종 택 1</p>
-              <p className="mt-2 text-red-600 font-bold">36,500원</p>
+              <p className="font-semibold">[1위향수/한정판]포맨트 시그니처 퍼퓸 헬로키티 에디션</p>
+              <p className="text-gray-500">단품 50ml 2종 택1</p>
+              <p className="mt-2 text-red-600 font-bold">36,900원</p>
             </div>
           </div>
 

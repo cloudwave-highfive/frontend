@@ -4,6 +4,41 @@ import { Input } from '@/components/ui/input';
 import { Search, ShoppingCart, User } from 'lucide-react';
 import { Link } from "react-router-dom";
 
+const products = [
+  {
+    id: 1,
+    brand: "포맨트",
+    name: "[1위향수/한정판]포맨트 시그니처 퍼퓸 헬로키티 에디션/단품 50ml 2종 택1",
+    price: "36,900원",
+    originalPrice: "39,000원",
+    image: "/img/product1.jpg",
+  },
+  {
+    id: 2,
+    brand: "바이오던스",
+    name: "[여배우PICK] 바이오던스 바이오 콜라겐 리얼 딥 마스크 16매",
+    price: "62,900원",
+    originalPrice: "80,000원",
+    image: "/img/product2.jpg",
+  },
+  {
+    id: 3,
+    brand: "에스쁘아",
+    name: "[윈터PICK/단독기획] 에스쁘아 비벨벳 커버쿠션 SPF42 PA++ (본품+리필) 8 colors",
+    price: "32,000원",
+    originalPrice: "40,000원",
+    image: "/img/product3.jpg",
+  },
+  {
+    id: 4,
+    brand: "어바웃톤",
+    name: "[5월올영픽/미니백 증정] 어바웃톤 블러 파우더 팩트 6종 (기획/단품)",
+    price: "11,260원",
+    originalPrice: "14,000원",
+    image: "/img/product4.jpg",
+  },
+];
+
 export default function OliveYoungClone() {
   return (
     <div className="min-h-screen bg-white font-sans">
@@ -41,14 +76,21 @@ export default function OliveYoungClone() {
       <section className="max-w-screen-xl mx-auto py-10">
         <h3 className="text-lg font-semibold mb-4">요즘 주목 받는 상품</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => (
-            <Link to="/product" key={i}>
-              <Card className="hover:shadow-md cursor-pointer">
-                <CardContent className="p-4">
-                  <div className="h-32 bg-gray-200 rounded mb-2" />
-                  <p className="text-sm font-medium">상품 이름 {i + 1}</p>
-                  <p className="text-xs text-gray-500">설명 텍스트</p>
-                  <p className="text-pink-500 font-bold mt-1">25,900원</p>
+          {products.map((product) => (
+            <Link to="/product" key={product.id}>
+              <Card className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-auto"
+                />
+                <CardContent className="p-3 space-y-1">
+                  <p className="text-xs text-gray-500">{product.brand}</p>
+                  <p className="text-sm text-gray-800 leading-tight line-clamp-2">{product.name}</p>
+                  <div className="text-sm mt-1">
+                    <span className="line-through text-gray-400 mr-2">{product.originalPrice}</span>
+                    <span className="text-pink-500 font-semibold">{product.price}</span>
+                  </div>
                 </CardContent>
               </Card>
             </Link>
