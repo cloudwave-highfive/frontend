@@ -44,7 +44,7 @@ export default function OrderCompletePage() {
               <tbody>
                 <tr className="border-b">
                   <td className="py-2 text-gray-500">총상품금액</td>
-                  <td className="py-2 text-right font-medium">64,970원</td>
+                  <td className="py-2 text-right font-medium">36,900원</td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-2 text-gray-500">총할인금액</td>
@@ -65,7 +65,7 @@ export default function OrderCompletePage() {
                 <tr>
                   <td className="py-3 text-lg font-semibold">최종 결제금액</td>
                   <td className="py-3 text-right text-red-500 text-lg font-bold">
-                    64,970원
+                    36,900원
                   </td>
                 </tr>
                 <tr>
